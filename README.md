@@ -2,6 +2,12 @@
 
 A Python tool that converts YAML files into professional, ATS-friendly PDF resumes with clean black and white formatting. Configurable fonts, spacing, and comprehensive section support.
 
+<p align="center">
+  <img src="pictures/template.png" width="35%" alt="Resume Template" />
+  <img src="pictures/example.png" width="35%" alt="Resume Example" />
+</p>
+
+
 ## Quick Start
 
 ### From Repository
@@ -341,14 +347,6 @@ personal:
 **Font not working**
 - Ensure font name matches standard PDF fonts exactly
 - Use `Helvetica`, `Times-Roman`, or `Courier` families
-
-## Examples
-
-See included example files:
-- `minimal_resume.yaml` - Essential sections only
-- `example_resume.yaml` - All features demonstrated
-- `Sarah_Mitchell_resume.pdf` - Comprehensive example output
-- `Alex_Johnson_resume.pdf` - Minimal example output
 
 ## Requirements
 
