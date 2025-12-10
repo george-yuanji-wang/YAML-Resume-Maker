@@ -134,7 +134,7 @@ class ResumeGenerator:
             fontSize=self.config['body_size'],
             textColor=colors.HexColor('#333333'),
             alignment=TA_CENTER,
-            spaceAfter=8
+            spaceAfter=4
         ))
         
         # Section header style
@@ -159,7 +159,9 @@ class ResumeGenerator:
             textColor=colors.HexColor('#000000'),
             fontName=font_bold,
             spaceAfter=1,
-            leading=12
+            leading=12,
+            leftIndent=0,
+            firstLineIndent=0
         ))
         
         # Company / institution style
@@ -170,7 +172,9 @@ class ResumeGenerator:
             textColor=colors.HexColor('#333333'),
             fontName=font_italic,
             spaceAfter=1,
-            leading=11
+            leading=11,
+            leftIndent=0,
+            firstLineIndent=0
         ))
         
         # Date range style
@@ -339,21 +343,17 @@ class ResumeGenerator:
             if i > 0:
                 self.story.append(Spacer(1, self.config["item_spacing"]*inch))
             
-            # Create a table for title and date alignment
             title = exp.get('title', '')
             company = exp.get('company', '')
             
-            # Date range
             date_range = self._format_date_range(
                 exp.get('start_date'),
                 exp.get('end_date'),
                 exp.get('present', False)
             )
             
-            # Location
             location = exp.get('location', '')
             
-            # Title row
             title_data = [[
                 Paragraph(title, self.styles['ItemTitle']),
                 Paragraph(date_range, self.styles['DateRange'])
@@ -366,29 +366,28 @@ class ResumeGenerator:
                 ('RIGHTPADDING', (0, 0), (-1, -1), 0),
                 ('TOPPADDING', (0, 0), (-1, -1), 0),
                 ('BOTTOMPADDING', (0, 0), (-1, -1), 0),
+                ('ALIGN', (0, 0), (0, -1), 'LEFT'),
             ]))
+            title_table.hAlign = 'LEFT'
             
             self.story.append(title_table)
             
-            # Company and location
             if company:
                 company_location = company
                 if location:
                     company_location += f" • {location}"
                 self.story.append(Paragraph(company_location, self.styles['ItemSubtitle']))
             
-            # Description or highlights
             if 'description' in exp and exp['description']:
                 self.story.append(Spacer(1, 0.03*inch))
                 self.story.append(Paragraph(exp['description'], self.styles['ResumeBody']))
             
-            # Achievements/responsibilities as bullet points
             if 'highlights' in exp:
                 highlights = exp['highlights']
                 if highlights:
                     self.story.append(Spacer(1, 0.03*inch))
                     for highlight in highlights:
-                        if highlight and highlight.strip():  # Skip empty/whitespace-only
+                        if highlight and highlight.strip():
                             bullet_text = f"• {highlight}"
                             self.story.append(Paragraph(bullet_text, self.styles['ResumeBody']))
         
@@ -408,7 +407,6 @@ class ResumeGenerator:
             if i > 0:
                 self.story.append(Spacer(1, self.config["item_spacing"]*inch))
             
-            # Degree and date
             degree = edu.get('degree', '')
             field = edu.get('field', '')
             if degree and field:
@@ -439,11 +437,12 @@ class ResumeGenerator:
                     ('RIGHTPADDING', (0, 0), (-1, -1), 0),
                     ('TOPPADDING', (0, 0), (-1, -1), 0),
                     ('BOTTOMPADDING', (0, 0), (-1, -1), 0),
+                    ('ALIGN', (0, 0), (0, -1), 'LEFT'),
                 ]))
+                degree_table.hAlign = 'LEFT'
                 
                 self.story.append(degree_table)
             
-            # Institution and location
             institution = edu.get('institution', '')
             location = edu.get('location', '')
             
@@ -453,7 +452,6 @@ class ResumeGenerator:
                     inst_location += f" • {location}"
                 self.story.append(Paragraph(inst_location, self.styles['ItemSubtitle']))
             
-            # GPA, honors, etc.
             details = []
             if 'gpa' in edu:
                 details.append(f"GPA: {edu['gpa']}")
@@ -464,7 +462,6 @@ class ResumeGenerator:
                 details_text = ' • '.join(details)
                 self.story.append(Paragraph(details_text, self.styles['ResumeBody']))
             
-            # Additional highlights
             if 'highlights' in edu:
                 highlights = edu['highlights']
                 if highlights:
@@ -484,9 +481,7 @@ class ResumeGenerator:
         
         self._add_section_header('SKILLS')
         
-        # Handle different skill formats
         if isinstance(skills, dict):
-            # Categorized skills
             for category, skill_list in skills.items():
                 if skill_list:
                     category_title = f"<b>{category}:</b> "
@@ -499,7 +494,6 @@ class ResumeGenerator:
                     self.story.append(Paragraph(full_text, self.styles['SkillItem']))
         
         elif isinstance(skills, list):
-            # Simple list of skills
             skills_text = ', '.join(skills)
             self.story.append(Paragraph(skills_text, self.styles['SkillItem']))
         
@@ -519,7 +513,6 @@ class ResumeGenerator:
             if i > 0:
                 self.story.append(Spacer(1, self.config["item_spacing"]*inch))
             
-            # Project name and date
             name = project.get('name', '')
             date = project.get('date', '')
             
@@ -532,15 +525,16 @@ class ResumeGenerator:
                 name_table = Table(name_data, colWidths=[4.5*inch, 2*inch])
                 name_table.setStyle(TableStyle([
                     ('VALIGN', (0, 0), (-1, -1), 'TOP'),
-                    ('LEFTPADDING', (0, 0), (-1, -1), 0),
+                    ('LEFTPADDING', (0, 0), (-1, -1), 0), 
                     ('RIGHTPADDING', (0, 0), (-1, -1), 0),
                     ('TOPPADDING', (0, 0), (-1, -1), 0),
                     ('BOTTOMPADDING', (0, 0), (-1, -1), 0),
+                    ('ALIGN', (0, 0), (0, -1), 'LEFT'),
                 ]))
+                name_table.hAlign = 'LEFT'
                 
                 self.story.append(name_table)
             
-            # Technologies/tools
             if 'technologies' in project:
                 tech = project['technologies']
                 if isinstance(tech, list):
@@ -549,12 +543,10 @@ class ResumeGenerator:
                     tech_text = str(tech)
                 self.story.append(Paragraph(f"<i>Technologies:</i> {tech_text}", self.styles['ItemSubtitle']))
             
-            # Description
             if 'description' in project:
                 self.story.append(Spacer(1, 0.03*inch))
                 self.story.append(Paragraph(project['description'], self.styles['ResumeBody']))
             
-            # Highlights
             if 'highlights' in project:
                 highlights = project['highlights']
                 if highlights:
@@ -563,7 +555,6 @@ class ResumeGenerator:
                         bullet_text = f"• {highlight}"
                         self.story.append(Paragraph(bullet_text, self.styles['ResumeBody']))
             
-            # URL
             if 'url' in project:
                 url_text = f"<i>Link:</i> {project['url']}"
                 self.story.append(Paragraph(url_text, self.styles['ResumeBody']))
@@ -585,7 +576,6 @@ class ResumeGenerator:
             issuer = cert.get('issuer', '')
             date = cert.get('date', '')
             
-            # Certification name and date
             if name:
                 cert_data = [[
                     Paragraph(name, self.styles['ItemTitle']),
@@ -599,7 +589,9 @@ class ResumeGenerator:
                     ('RIGHTPADDING', (0, 0), (-1, -1), 0),
                     ('TOPPADDING', (0, 0), (-1, -1), 0),
                     ('BOTTOMPADDING', (0, 0), (-1, -1), 0),
+                    ('ALIGN', (0, 0), (0, -1), 'LEFT'),
                 ]))
+                cert_table.hAlign = 'LEFT'
                 
                 self.story.append(cert_table)
             
@@ -642,7 +634,9 @@ class ResumeGenerator:
                     ('RIGHTPADDING', (0, 0), (-1, -1), 0),
                     ('TOPPADDING', (0, 0), (-1, -1), 0),
                     ('BOTTOMPADDING', (0, 0), (-1, -1), 0),
+                    ('ALIGN', (0, 0), (0, -1), 'LEFT'),
                 ]))
+                award_table.hAlign = 'LEFT'
                 
                 self.story.append(award_table)
             
@@ -711,7 +705,6 @@ class ResumeGenerator:
         self._add_section_header('LANGUAGES')
         
         if isinstance(languages, dict):
-            # Languages with proficiency levels
             lang_items = []
             for lang, level in languages.items():
                 lang_items.append(f"{lang} ({level})")
@@ -719,7 +712,6 @@ class ResumeGenerator:
             self.story.append(Paragraph(lang_text, self.styles['SkillItem']))
         
         elif isinstance(languages, list):
-            # Simple list
             for lang in languages:
                 if isinstance(lang, dict):
                     name = lang.get('name', '')
@@ -748,7 +740,6 @@ class ResumeGenerator:
             if i > 0:
                 self.story.append(Spacer(1, self.config["item_spacing"]*inch))
             
-            # Role and date
             role = vol.get('role', '')
             organization = vol.get('organization', '')
             date_range = self._format_date_range(
@@ -770,19 +761,19 @@ class ResumeGenerator:
                     ('RIGHTPADDING', (0, 0), (-1, -1), 0),
                     ('TOPPADDING', (0, 0), (-1, -1), 0),
                     ('BOTTOMPADDING', (0, 0), (-1, -1), 0),
+                    ('ALIGN', (0, 0), (0, -1), 'LEFT'),
                 ]))
+                role_table.hAlign = 'LEFT'
                 
                 self.story.append(role_table)
             
             if organization:
                 self.story.append(Paragraph(organization, self.styles['ItemSubtitle']))
             
-            # Description
             if 'description' in vol:
                 self.story.append(Spacer(1, 0.03*inch))
                 self.story.append(Paragraph(vol['description'], self.styles['ResumeBody']))
             
-            # Highlights
             if 'highlights' in vol:
                 highlights = vol['highlights']
                 if highlights:
@@ -837,7 +828,7 @@ class ResumeGenerator:
         # Add footer if configured (always last)
         if self.config['footer']:
             self.story.append(Spacer(1, 0.2*inch))
-            footer_text = "Resume Generator @ http://bit.ly/4a5hhCH | Made by George Yuanji Wang"
+            footer_text = "Resume Generator @ http://bit.ly/4a5hhCH @ Made by George Yuanji Wang"
             self.story.append(Paragraph(footer_text, self.styles['Footer']))
         
         # Build the PDF

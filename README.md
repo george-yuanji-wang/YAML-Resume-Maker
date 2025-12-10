@@ -45,7 +45,7 @@ cp minimal_resume.yaml my_resume.yaml
 # 2. Edit my_resume.yaml with your information
 
 # 3. Generate your resume
-python resume_generator.py my_resume.yaml
+python3 resume_generator.py my_resume.yaml
 
 # 4. Find your resume in: `output/[Your_Name]_resume.pdf`
 ```
