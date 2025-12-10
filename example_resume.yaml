@@ -1,0 +1,236 @@
+# YAML Template
+# This file demonstrates all available sections and fields
+# Remove or comment out sections you don't need
+
+# ==================== PERSONAL INFORMATION ====================
+# Required section - must include at least 'name'
+personal:
+  name: "Sarah Mitchell"
+  email: "sarah.mitchell@email.com"
+  phone: "+1 (555) 123-4567"
+  
+  # Location can be a string or structured object
+  location:
+    city: "San Francisco"
+    state: "CA"
+    country: "USA"
+  
+  # Optional: Professional links
+  links:
+    linkedin: "linkedin.com/in/sarahmitchell"
+    github: "github.com/sarahmitchell"
+    portfolio: "sarahmitchell.dev"
+    twitter: "@sarahcodes"
+
+# ==================== PROFESSIONAL SUMMARY ====================
+# Optional: Brief professional summary (2-4 sentences recommended)
+summary: >
+  Results-driven Senior Software Engineer with 8+ years of experience building 
+  scalable web applications and leading cross-functional teams. Proven expertise 
+  in full-stack development, cloud architecture, and agile methodologies. 
+  Passionate about creating efficient, user-centric solutions and mentoring 
+  junior developers.
+
+
+# ==================== WORK EXPERIENCE ====================
+# Optional: Professional work history
+experience:
+  - title: "Senior Software Engineer"
+    company: "TechCorp Solutions"
+    location: "San Francisco, CA"
+    start_date: "June 2020"
+    end_date: "Present"
+    present: true
+    description: >
+      Leading development of cloud-native microservices architecture serving 
+      5M+ daily active users.
+    highlights:
+      - "Architected and implemented microservices platform reducing API response time by 60%"
+      - "Led team of 6 engineers in migrating legacy monolith to modern cloud infrastructure"
+      - "Established CI/CD pipeline reducing deployment time from 2 hours to 15 minutes"
+      - "Mentored 3 junior developers, with 2 promoted to mid-level positions"
+      - "Reduced cloud infrastructure costs by 35% through optimization and right-sizing"
+
+  - title: "Software Engineer"
+    company: "Digital Innovations Inc"
+    location: "San Jose, CA"
+    start_date: "August 2017"
+    end_date: "May 2020"
+    highlights:
+      - "Developed RESTful APIs serving 1M+ requests per day with 99.9% uptime"
+      - "Built responsive front-end features using React and TypeScript"
+      - "Implemented automated testing suite increasing code coverage from 45% to 85%"
+      - "Collaborated with product team to deliver 15+ features on schedule"
+      - "Optimized database queries reducing load times by 40%"
+
+  - title: "Junior Software Developer"
+    company: "StartupXYZ"
+    location: "Palo Alto, CA"
+    start_date: "January 2016"
+    end_date: "July 2017"
+    highlights:
+      - "Contributed to development of customer-facing web application using Django and PostgreSQL"
+      - "Fixed 100+ bugs and implemented feature requests based on user feedback"
+      - "Participated in code reviews and adopted best practices for clean code"
+      - "Assisted in migration from monolithic architecture to service-oriented design"
+
+# ==================== EDUCATION ====================
+# Optional: Educational background
+education:
+  - degree: "Master of Science"
+    field: "Computer Science"
+    institution: "Stanford University"
+    location: "Stanford, CA"
+    start_date: "2014"
+    end_date: "2016"
+    gpa: "3.85/4.0"
+    honors: "Cum Laude"
+    highlights:
+      - "Thesis: 'Optimizing Distributed Systems for Low-Latency Applications'"
+      - "Teaching Assistant for Advanced Algorithms course"
+      - "Member of Women in Computer Science organization"
+
+  - degree: "Bachelor of Science"
+    field: "Software Engineering"
+    institution: "University of California, Berkeley"
+    location: "Berkeley, CA"
+    start_date: "2010"
+    end_date: "2014"
+    gpa: "3.7/4.0"
+    highlights:
+      - "Dean's List all semesters"
+      - "Senior Project: Real-time collaborative code editor"
+      - "President of ACM student chapter"
+
+# ==================== TECHNICAL SKILLS ====================
+# Optional: Can be categorized or a simple list
+skills:
+  # Categorized format (recommended)
+  Languages: ["Python", "JavaScript/TypeScript", "Java", "Go", "SQL"]
+  Frameworks: ["React", "Node.js", "Django", "Spring Boot", "FastAPI"]
+  Databases: ["PostgreSQL", "MongoDB", "Redis", "Elasticsearch"]
+  Cloud & DevOps: ["AWS (EC2, S3, Lambda, RDS)", "Docker", "Kubernetes", "Terraform"]
+  Tools: ["Git", "Jenkins", "Jira", "New Relic", "Grafana"]
+  Methodologies: ["Agile/Scrum", "TDD", "CI/CD", "Microservices", "RESTful APIs"]
+
+  # Alternative simple list format:
+  # - Python
+  # - JavaScript
+  # - React
+  # - AWS
+
+# ==================== PROJECTS ====================
+# Optional: Personal or notable projects
+projects:
+  - name: "Open Source Performance Monitor"
+    date: "2023"
+    technologies: ["Python", "React", "PostgreSQL", "Docker"]
+    description: >
+      Developed open-source application performance monitoring tool with 
+      real-time metrics visualization and alerting capabilities.
+    highlights:
+      - "Gained 2,500+ GitHub stars and 45 active contributors"
+      - "Integrated with 10+ popular frameworks and platforms"
+      - "Featured in Python Weekly and JavaScript Weekly newsletters"
+    url: "github.com/sarahmitchell/perfmonitor"
+
+  - name: "AI-Powered Code Reviewer"
+    date: "2022"
+    technologies: ["Python", "TensorFlow", "FastAPI", "React"]
+    description: >
+      Machine learning system that analyzes code and suggests improvements 
+      based on best practices and common patterns.
+    highlights:
+      - "Trained on 10M+ lines of open-source code"
+      - "Achieved 87% accuracy in detecting code smells"
+      - "Won 'Best AI Project' at Tech Innovation Hackathon"
+
+# ==================== CERTIFICATIONS ====================
+# Optional: Professional certifications
+certifications:
+  - name: "AWS Certified Solutions Architect - Professional"
+    issuer: "Amazon Web Services"
+    date: "2023"
+    credential_id: "AWS-PSA-12345"
+
+  - name: "Certified Kubernetes Administrator (CKA)"
+    issuer: "Cloud Native Computing Foundation"
+    date: "2022"
+    credential_id: "CKA-2022-67890"
+
+  - name: "Professional Scrum Master I (PSM I)"
+    issuer: "Scrum.org"
+    date: "2021"
+
+# ==================== AWARDS & HONORS ====================
+# Optional: Professional awards and recognition
+awards:
+  - name: "Engineering Excellence Award"
+    issuer: "TechCorp Solutions"
+    date: "2023"
+    description: "Recognized for outstanding technical leadership and innovation"
+
+  - name: "Hackathon Winner - Best Technical Implementation"
+    issuer: "Bay Area Tech Summit"
+    date: "2022"
+    description: "First place for building real-time collaborative platform"
+
+  - name: "Women in Technology Leadership Award"
+    issuer: "Silicon Valley Tech Association"
+    date: "2021"
+
+# ==================== PUBLICATIONS ====================
+# Optional: Academic or professional publications
+publications:
+  - title: "Scalable Microservices Architecture: A Practical Guide"
+    authors: ["Sarah Mitchell", "John Doe"]
+    venue: "IEEE Software Engineering Conference"
+    date: "2023"
+    doi: "10.1109/EXAMPLE.2023.12345"
+
+  - title: "Optimizing Database Performance in Cloud Environments"
+    authors: "Sarah Mitchell"
+    venue: "ACM Computing Surveys"
+    date: "2022"
+
+# ==================== LANGUAGES ====================
+# Optional: Language proficiencies
+languages:
+  # Dictionary format with proficiency levels
+  English: "Native"
+  Spanish: "Professional Working Proficiency"
+  Mandarin: "Elementary Proficiency"
+
+  # Alternative list format:
+  # - name: "English"
+  #   level: "Native"
+  # - name: "Spanish"
+  #   level: "Professional"
+
+# ==================== VOLUNTEER EXPERIENCE ====================
+# Optional: Volunteer work and community involvement
+volunteer:
+  - role: "Technical Mentor"
+    organization: "Girls Who Code"
+    start_date: "2020"
+    end_date: "Present"
+    present: true
+    description: >
+      Mentor high school students in programming fundamentals and 
+      career development.
+    highlights:
+      - "Mentored 15+ students in web development and software engineering"
+      - "Organized 5 coding workshops for 100+ participants"
+      - "Helped 3 students secure internships at tech companies"
+
+  - role: "Code Reviewer"
+    organization: "Open Source Initiative"
+    start_date: "2019"
+    end_date: "Present"
+    present: true
+    description: >
+      Contribute to open-source projects by reviewing code submissions 
+      and helping maintainers.
+    highlights:
+      - "Reviewed 200+ pull requests across various projects"
+      - "Contributed to 10+ popular open-source libraries"

@@ -1,0 +1,96 @@
+# Minimal Resume Template
+# Replace all bracketed placeholders with your actual information
+# Remove any sections you don't need
+
+personal:
+  name: "[Your Full Name]"
+  email: "[your.email@example.com]"
+  phone: "[+1 (555) 000-0000]"
+  location: "[City, State]"
+  links:                         # Optional - remove if not needed
+    linkedin: "[linkedin.com/in/username]"
+    github: "[github.com/username]"
+
+summary: >
+  [Write a brief 2-4 sentence professional summary highlighting your key 
+  strengths, experience level, and career focus. This is optional but recommended.]
+
+experience:
+  - title: "[Job Title]"
+    company: "[Company Name]"
+    location: "[City, State]"    # Optional
+    start_date: "[Month Year]"
+    end_date: "[Month Year]"     # Or remove and use: present: true
+    highlights:
+      - "[Quantifiable achievement with metrics - increased X by Y%]"
+      - "[Key responsibility or project you led]"
+      - "[Impact or result you delivered]"
+
+  - title: "[Previous Job Title]"
+    company: "[Previous Company]"
+    start_date: "[Month Year]"
+    end_date: "[Month Year]"
+    highlights:
+      - "[Achievement from previous role]"
+      - "[Another key accomplishment]"
+
+education:
+  - degree: "[Degree Type]"        # e.g., "Bachelor of Science", "Master of Arts"
+    field: "[Field of Study]"      # e.g., "Computer Science", "Business"
+    institution: "[University Name]"
+    location: "[City, State]"      # Optional
+    start_date: "[Year]"           # Optional
+    end_date: "[Year]"
+    gpa: "[X.X/4.0]"              # Optional - remove if not applicable
+
+skills:
+  # Categorized format (recommended)
+  "[Category 1]": ["[Skill 1]", "[Skill 2]", "[Skill 3]"]
+  "[Category 2]": ["[Skill 4]", "[Skill 5]", "[Skill 6]"]
+  "[Category 3]": ["[Skill 7]", "[Skill 8]", "[Skill 9]"]
+
+# ==================== OPTIONAL SECTIONS ====================
+# Uncomment and fill in any additional sections you need
+
+# projects:
+#   - name: "[Project Name]"
+#     date: "[Year]"
+#     technologies: ["[Tech 1]", "[Tech 2]"]
+#     description: "[Brief description of what the project does]"
+#     highlights:
+#       - "[Key feature or achievement]"
+#     url: "[github.com/username/project]"  # Optional
+
+# certifications:
+#   - name: "[Certification Name]"
+#     issuer: "[Issuing Organization]"
+#     date: "[Month Year]"
+#     credential_id: "[ID123456]"  # Optional
+
+# awards:
+#   - name: "[Award Name]"
+#     issuer: "[Organization]"
+#     date: "[Year]"
+#     description: "[What you received this for]"  # Optional
+
+# languages:
+#   "[Language 1]": "[Proficiency Level]"  # e.g., English: "Native"
+#   "[Language 2]": "[Proficiency Level]"  # e.g., Spanish: "Professional"
+
+# volunteer:
+#   - role: "[Volunteer Role]"
+#     organization: "[Organization Name]"
+#     start_date: "[Year]"
+#     end_date: "[Year]"
+#     highlights:
+#       - "[Impact or achievement]"
+
+# ==================== OPTIONAL CONFIGURATION ====================
+# Uncomment to customize fonts, spacing, or add footer
+
+# config:
+#   fonts:
+#     name: "Helvetica"
+#     body_size: 9               # Adjust font sizes
+#   margin: 0.6                  # Page margins in inches
+#   footer: true                 # Add generator attribution
