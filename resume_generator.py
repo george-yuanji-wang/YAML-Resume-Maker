@@ -122,7 +122,7 @@ class ResumeGenerator:
             parent=styles['Heading1'],
             fontSize=self.config['name_size'],
             textColor=colors.HexColor('#000000'),
-            spaceAfter=4,
+            spaceAfter=1,
             alignment=TA_CENTER,
             fontName=font_bold
         ))
@@ -134,7 +134,7 @@ class ResumeGenerator:
             fontSize=self.config['body_size'],
             textColor=colors.HexColor('#333333'),
             alignment=TA_CENTER,
-            spaceAfter=4
+            spaceAfter=1
         ))
         
         # Section header style
@@ -144,7 +144,7 @@ class ResumeGenerator:
             fontSize=self.config['section_header_size'],
             textColor=colors.HexColor('#000000'),
             spaceAfter=4,
-            spaceBefore=8,
+            spaceBefore=4,
             fontName=font_bold,
             borderWidth=0,
             borderPadding=0,
@@ -304,7 +304,7 @@ class ResumeGenerator:
             for key, value in links.items():
                 if value:
                     # Create a simple text representation (not hyperlinked in black/white)
-                    link_parts.append(f"{key.title()}: {value}")
+                    link_parts.append(f'{key.title()}: <a href="{value}"><u>{value}</u></a>')
             
             if link_parts:
                 links_text = ' • '.join(link_parts)
@@ -359,7 +359,7 @@ class ResumeGenerator:
                 Paragraph(date_range, self.styles['DateRange'])
             ]]
             
-            title_table = Table(title_data, colWidths=[4.5*inch, 2*inch])
+            title_table = Table(title_data, colWidths=[self.doc_width * 0.7, self.doc_width * 0.25])
             title_table.setStyle(TableStyle([
                 ('VALIGN', (0, 0), (-1, -1), 'TOP'),
                 ('LEFTPADDING', (0, 0), (-1, -1), 0),
@@ -430,7 +430,7 @@ class ResumeGenerator:
                     Paragraph(date_range, self.styles['DateRange'])
                 ]]
                 
-                degree_table = Table(degree_data, colWidths=[4.5*inch, 2*inch])
+                degree_table = Table(degree_data, colWidths=[self.doc_width * 0.7, self.doc_width * 0.25])
                 degree_table.setStyle(TableStyle([
                     ('VALIGN', (0, 0), (-1, -1), 'TOP'),
                     ('LEFTPADDING', (0, 0), (-1, -1), 0),
@@ -507,7 +507,7 @@ class ResumeGenerator:
         if not projects:
             return
         
-        self._add_section_header('PROJECTS')
+        self._add_section_header('PROJECT HIGHLIGHTS')
         
         for i, project in enumerate(projects):
             if i > 0:
@@ -522,7 +522,7 @@ class ResumeGenerator:
                     Paragraph(date, self.styles['DateRange'])
                 ]]
                 
-                name_table = Table(name_data, colWidths=[4.5*inch, 2*inch])
+                name_table = Table(name_data, colWidths=[self.doc_width * 0.7, self.doc_width * 0.25])
                 name_table.setStyle(TableStyle([
                     ('VALIGN', (0, 0), (-1, -1), 'TOP'),
                     ('LEFTPADDING', (0, 0), (-1, -1), 0), 
@@ -582,7 +582,7 @@ class ResumeGenerator:
                     Paragraph(date, self.styles['DateRange'])
                 ]]
                 
-                cert_table = Table(cert_data, colWidths=[4.5*inch, 2*inch])
+                cert_table = Table(cert_data, colWidths=[self.doc_width * 0.7, self.doc_width * 0.25])
                 cert_table.setStyle(TableStyle([
                     ('VALIGN', (0, 0), (-1, -1), 'TOP'),
                     ('LEFTPADDING', (0, 0), (-1, -1), 0),
@@ -627,7 +627,7 @@ class ResumeGenerator:
                     Paragraph(date, self.styles['DateRange'])
                 ]]
                 
-                award_table = Table(award_data, colWidths=[4.5*inch, 2*inch])
+                award_table = Table(award_data, colWidths=[self.doc_width * 0.7, self.doc_width * 0.25])
                 award_table.setStyle(TableStyle([
                     ('VALIGN', (0, 0), (-1, -1), 'TOP'),
                     ('LEFTPADDING', (0, 0), (-1, -1), 0),
@@ -687,7 +687,8 @@ class ResumeGenerator:
                 self.story.append(Paragraph(f"<i>{venue_text}</i>", self.styles['ItemSubtitle']))
             
             if 'doi' in pub:
-                doi_text = f"DOI: {pub['doi']}"
+                doi = pub['doi']
+                doi_text = f'DOI: <a href="{doi}"><u>{doi}</u></a>'
                 self.story.append(Paragraph(doi_text, self.styles['ResumeBody']))
             
             self.story.append(Spacer(1, 0.04*inch))
@@ -754,7 +755,7 @@ class ResumeGenerator:
                     Paragraph(date_range, self.styles['DateRange'])
                 ]]
                 
-                role_table = Table(role_data, colWidths=[4.5*inch, 2*inch])
+                role_table = Table(role_data, colWidths=[self.doc_width * 0.7, self.doc_width * 0.25])
                 role_table.setStyle(TableStyle([
                     ('VALIGN', (0, 0), (-1, -1), 'TOP'),
                     ('LEFTPADDING', (0, 0), (-1, -1), 0),
@@ -800,6 +801,9 @@ class ResumeGenerator:
             topMargin=margin*inch,
             bottomMargin=margin*inch
         )
+
+        # store usable width for tables
+        self.doc_width = doc.width
         
         # Build header (always first)
         self._build_header()
@@ -828,7 +832,7 @@ class ResumeGenerator:
         # Add footer if configured (always last)
         if self.config['footer']:
             self.story.append(Spacer(1, 0.2*inch))
-            footer_text = "Resume Generator @ http://bit.ly/4a5hhCH @ Made by George Yuanji Wang"
+            footer_text = "YAML-Resume Generator @ http://bit.ly/4a5hhCH @ Made by George Yuanji Wang"
             self.story.append(Paragraph(footer_text, self.styles['Footer']))
         
         # Build the PDF
